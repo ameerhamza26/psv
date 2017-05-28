@@ -1,33 +1,25 @@
 <ion-view>
     <ion-header-bar class="bar-stable bg-color-blue">
-        <div class="buttons">
-            <button class="button button-icon ion-ios-arrow-back" style="color: white;" nav-direction="back" ng-click="$ionicGoBack(); "></button>
-        </div>
         <h1 class="title color-white txt-al-center" style="left: 0px !important;"><span>PVS</span></h1>
     </ion-header-bar>
-    <div class="bar bg-color-bluedark" style="margin-top: 44px;">
-
-    		<h1 class="title color-white font-quick"><img src="img/md-icon.png" style="width: 30px; height: 30px;"><span style="margin-left: 5px;">Medicine</span></h1>
-    	</div>
-    <ion-content class="has-header" style="background-color: rgba(239,234,234,1);">
-    	
-        <div style="width: 100%; background-color: white;margin-top: 5px; height: 110px; margin-top: 44px;" ng-click="navigate(1)">
-        	<img src="img/gsk.jpg" style="width: 80%; margin-left: 10%;">
-        </div>
-        <div class="title-brand txt-al-center" style="margin-top: 5px;" ng-if="showCamera">
+    <ion-content class="has-header" style="background-color: rgba(239,234,234,1); background-image: url('../img/bg.png')">
+        <div class="title-brand txt-al-center" style="margin-top: 20px;" ng-if="showCamera">
             Tap to scan a product barcode
         </div>
         <div style="width: 150px;margin:auto;" ng-click="scanBarcode()" ng-if="showCamera">
-            <img src="img/scan.png" style="width: 100%;">
+            <img src="img/icon.png" style="width: 100%;">
         </div>
         <div style="width: 90%;margin:auto; margin-top: 10px;" ng-if="showVefied">
-            <img src="img/certified.jpg" style="width: 100%;">
+            <img src="img/certified.png" style="width: 100%;">
         </div>
         <div style="width: 90%;margin:auto; margin-top: 10px;" ng-if="showExpired">
-            <img src="img/expired.jpg" style="width: 100%;">
+            <img src="img/expired.png" style="width: 100%;">
         </div>
         <div style="width: 90%;margin:auto; margin-top: 10px;" ng-if="showFake">
-            <img src="img/fake.jpg" style="width: 100%;">
+            <img src="img/fake.png" style="width: 100%;">
+        </div>
+        <div style="width: 90%;margin:auto; margin-top: 10px;" ng-if="showSoldout">
+            <img src="img/soldout.png" style="width: 100%;">
         </div>
         <div class="bg-color-blue color-white txt-al-center font-quick" style="width: 90%; margin:auto; height: 50px; padding: 14px; margin-bottom: 10px;"  ng-click="navigateToMap();" ng-if="showFake">
             Find nearby store 

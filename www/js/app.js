@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
     })
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/barscan');
 })
 
 .controller('HomeCtrl', function($scope, $state) {
@@ -60,6 +60,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
     $scope.showExpired = false;
     $scope.showFake = false;
     $scope.tryAgain = false;
+    $scope.showSoldout = false;
     $scope.scanBarcode = function() {
         $scope.showCamera = false;
         $scope.showVefied = false;
@@ -75,23 +76,42 @@ angular.module('starter', ['ionic', 'ngCordova'])
                 $ionicLoading.hide();
                 if (!imageData.cancelled) {
 
-                    var id = getRandomInt(1, 4);
-                    if (id == 1) {
+                    //var id = getRandomInt(1, 4);
+                    if (imageData.text == 'TjyaFHlvSBg5RpD8Z6aE' || imageData.text == 'fsINjl3lwoi3BjviSRYE' || imageData.text == 'ujQJT7rDAwKsGffMfMKu') {
+                        //alert("in if");
                         $scope.showVefied = true;
                         $scope.showExpired = false;
                         $scope.showFake = false;
+                        $scope.showSoldout = false;
                         $scope.tryAgain = true;
-                    } else if (id == 2) {
-                        $scope.showVefied = false;
-                        $scope.showExpired = true;
-                        $scope.showFake = false;
-                        $scope.tryAgain = true;
-                    } else {
+                    } else if (imageData.text == 'y3WGnU54A1Fh69PlorBC' || imageData.text == 'oHAAEesobo2LMvg0NxNA' || imageData.text == 'SpNdn38EKSchlGlEUGLj') {
                         $scope.showVefied = false;
                         $scope.showExpired = false;
                         $scope.showFake = true;
+                        $scope.showSoldout = false;
+                        $scope.tryAgain = true;
+                    } else if (imageData.text == 'da5720LjjsGhLzMEdmBC' || imageData.text == 'qGrxReviCuxOuOsQW5O6' || imageData.text == 'T5jNLFBoRRDfKDLOsJGm') {
+                        $scope.showVefied = false;
+                        $scope.showExpired = true;
+                        $scope.showSoldout = false;
+                        $scope.showFake = false;
+
+                        $scope.tryAgain = true;
+                    } else if (imageData.text == 'Fte7EQ3fXhNr4wMAOpxh' || imageData.text == 'Nxl0PNCazXLFZUmGDeVA' || imageData.text == 'd4FP8seX7dcKFnd6d6Ws') {
+                        $scope.showVefied = false;
+                        $scope.showExpired = false;
+                        $scope.showSoldout = true;
+                        $scope.showFake = false;
+
                         $scope.tryAgain = true;
                     }
+                } else {
+                    $scope.showCamera = true;
+                    $scope.showVefied = false;
+                    $scope.showExpired = false;
+                    $scope.showFake = false;
+                    $scope.tryAgain = false;
+                    $scope.showSoldout = false;
                 }
             }, 2000);
 
