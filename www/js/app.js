@@ -44,14 +44,29 @@ angular.module('starter', ['ionic', 'ngCordova'])
         controller: 'MapCtrl'
     })
 
+    .state('splash', {
+        url: '/splash',
+        templateUrl: 'templates/splash.html',
+        controller: 'SplashCtrl'
+    })
+
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/barscan');
+    $urlRouterProvider.otherwise('/splash');
 })
 
 .controller('HomeCtrl', function($scope, $state) {
     $scope.navigate = function(id) {
         $state.go('barscan', { id: id });
     }
+})
+
+.controller('SplashCtrl', function($scope, $state, $timeout, $ionicHistory) {
+    $ionicHistory.nextViewOptions({
+            disableBack: true
+        });
+    $timeout(function(){
+        $state.go('barscan');
+    },5000);
 })
 
 .controller('BarscanCtrl', function($scope, $cordovaBarcodeScanner, $state, $ionicHistory, $ionicLoading, $timeout) {
@@ -103,6 +118,12 @@ angular.module('starter', ['ionic', 'ngCordova'])
                         $scope.showSoldout = true;
                         $scope.showFake = false;
 
+                        $scope.tryAgain = true;
+                    } else {
+                        $scope.showVefied = false;
+                        $scope.showExpired = false;
+                        $scope.showFake = true;
+                        $scope.showSoldout = false;
                         $scope.tryAgain = true;
                     }
                 } else {
